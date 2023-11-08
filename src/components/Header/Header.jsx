@@ -26,7 +26,7 @@ function Header() {
 
       <nav className=' '>
         {/* <ul className={`${isHamClicked ? "flex flex-col p-3 w-1/2 rounded-lg absolute right-10 top-24 bg-slate-100" : "hidden"}  md:flex `}> */}
-        <ul className={`  flex flex-col text-center md:flex-row`}>
+        <ul className={`  flex  text-center flex-row`}>
           <li className="me-5">
             <NavLink to="/"
               className={({ isActive }) => (`${isActive ? "text-[#dcf0f0] font-extrabold underline" : "text-[#dcdcf0] "} `)}
