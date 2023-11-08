@@ -1,20 +1,22 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { addDate } from '../../store/locationSlice'
 function CurrentWeather() {
   const [weather, setWeather] = useState({})
 
   const locationFromStore = (useSelector(state => state.location))
 
+  const dispatch = useDispatch()
   // console.log(locationFromStore.location);
 
   useEffect(() => {
     fetch(`http://api.weatherapi.com/v1/current.json?key=1c238ddb55544a56bde52245230711&q=${locationFromStore.location ? locationFromStore.location : "goa"}`)
       .then(response => response.json())
       .then(data => {
-        // console.log(data)
+        console.log(data)
         setWeather(data)
+        dispatch(addDate(data.location.localtime))
 
       }
       )
