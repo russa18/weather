@@ -24,8 +24,8 @@ function Hourly() {
         <div className='w-[15%] font-bold'>
           Time
         </div>
-        <div className='font-bold text-xl w-[15%]'>
-          Temperature
+        <div className='font-bold text-xl w-[15%] '>
+          Temp
         </div>
         <div className='font-bold flex justify-start align-middle w-[20%]'>
           Condition

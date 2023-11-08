@@ -5,7 +5,7 @@ import { addLocation } from '../../store/locationSlice'
 
 function Header() {
   const [searchInp, setSearchInp] = useState('')
-  const [isHamClicked, setIsHamClicked] = useState(false)
+  // const [isHamClicked, setIsHamClicked] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -16,41 +16,33 @@ function Header() {
     // console.log(searchInp)
   }
 
-  const toggleMenu = () => {
-    setIsHamClicked(!isHamClicked)
-  }
+  // const toggleMenu = () => {
+  //   setIsHamClicked(!isHamClicked)
+  // }
 
   const locationFromStore = useSelector(state => state.location);
   return (
-    <header className="flex items-center justify-between w-full bg-indigo-700 font-semibold p-10  text-lg">
-
-      <div className='font-semibold'>
-        <p className='uppercase font-bold'>{locationFromStore?.location}</p>
-        <p >{locationFromStore?.currDate}</p>
-      </div>
+    <header className="flex flex-col-reverse justify-evenly md:flex-row items-center md:justify-between w-full bg-[#00143c] font-semibold p-6  text-lg">
 
       <nav className=' '>
-        <ul className={`${isHamClicked ? "flex flex-col p-3 w-1/2 rounded-lg absolute right-10 top-24 bg-slate-100" : "hidden"}  md:flex `}>
+        {/* <ul className={`${isHamClicked ? "flex flex-col p-3 w-1/2 rounded-lg absolute right-10 top-24 bg-slate-100" : "hidden"}  md:flex `}> */}
+        <ul className={`  flex flex-col text-center md:flex-row`}>
           <li className="me-5">
             <NavLink to="/"
-              className={({ isActive }) => (`${isActive ? "text-black font-extrabold" : "text-gray-900 "} `)}
+              className={({ isActive }) => (`${isActive ? "text-[#dcf0f0] font-extrabold underline" : "text-[#dcdcf0] "} `)}
 
             >Current Weather</NavLink>
           </li>
           <li>
             <NavLink to="/hourly"
-              className={({ isActive }) => (`${isActive ? "text-black font-extrabold" : "text-gray-900"} me-5`)}
+              className={({ isActive }) => (`${isActive ? "text-[#dcf0f0] font-extrabold underline" : "text-[#dcdcf0]"} me-5`)}
             >Hourly</NavLink>
           </li>
 
         </ul>
-
-
-
-
       </nav>
 
-      <form className='flex align-middle' onSubmit={search}>
+      <form className='flex align-middle py-3 md:py-0' onSubmit={search}>
         <input
           type="text"
           placeholder='Enter location'
@@ -62,9 +54,16 @@ function Header() {
       </form>
 
 
-      <div className='block text-4xl font-extrabold  md:hidden' onClick={toggleMenu}>
-        &#8801;
+      <div className='font-semibold text-center'>
+        <p className='uppercase font-bold text-[#f0ffff]'>{locationFromStore?.location}</p>
+        <p className='text-[#f0ffff]'>{locationFromStore?.currDate}</p>
       </div>
+
+
+
+      {/* <div className='block text-4xl font-extrabold  md:hidden' onClick={toggleMenu}>
+        &#8801;
+      </div> */}
     </header>
 
   )
