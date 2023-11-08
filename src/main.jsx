@@ -11,7 +11,7 @@ import store from './store/store.js'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path='current-weather' element={<CurrentWeather />} />
+      <Route path='/' element={<CurrentWeather />} />
       <Route path='hourly' element={<Hourly/>}/>
     </Route>
   )

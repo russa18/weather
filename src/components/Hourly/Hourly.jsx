@@ -8,7 +8,7 @@ function Hourly() {
   const locationFromStore = useSelector(state => state.location);
   let forecastHour = []
   useEffect(() => {
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=1c238ddb55544a56bde52245230711&q=${locationFromStore.location ? locationFromStore.location : "goa"}&forecastday=10`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=1c238ddb55544a56bde52245230711&q=${locationFromStore.location ? locationFromStore.location : "goa"}&forecastday=10`)
       .then(response => response.json())
       .then(data => {
         setHourForecast(data);

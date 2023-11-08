@@ -32,7 +32,7 @@ function Header() {
       <nav className=' '>
         <ul className={`${isHamClicked ? "flex flex-col p-3 w-1/2 rounded-lg absolute right-10 top-24 bg-slate-100" : "hidden"}  md:flex `}>
           <li className="me-5">
-            <NavLink to="/current-weather"
+            <NavLink to="/"
               className={({ isActive }) => (`${isActive ? "text-black font-extrabold" : "text-gray-900 "} `)}
 
             >Current Weather</NavLink>
