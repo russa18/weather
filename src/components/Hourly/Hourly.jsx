@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import WeatherItem from '../weatherItem'
+import { WeatherItem } from '../index';
 
 
 function Hourly() {
