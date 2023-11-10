@@ -60,16 +60,16 @@ function Hourly() {
           Time
         </div>
         <div className='font-bold text-xl w-[15%] '>
-          Temp
+          Temp ℃
         </div>
         <div className='font-bold flex justify-start align-middle w-[25%]'>
           Condition
         </div>
         <div className='w-[10%] font-bold'>
-          Rain
+          Rain inch
         </div>
         <div className='w-[15%] font-bold'>
-          Wind Speed
+          Wind Speed km/h
         </div>
       </div>
       {forecastHour?.map((h, index) => (
