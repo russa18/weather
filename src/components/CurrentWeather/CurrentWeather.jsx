@@ -10,17 +10,51 @@ function CurrentWeather() {
   const dispatch = useDispatch()
   // console.log(locationFromStore.location);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
-    fetch(`https://api.weatherapi.com/v1/current.json?key=1c238ddb55544a56bde52245230711&q=${locationFromStore.location ? locationFromStore.location : "goa"}`)
-      .then(response => response.json())
-      .then(data => {
-        // console.log(data)
+
+    // without error handling
+    // fetch(`https://api.weatherapi.com/v1/currents.json?key=1c238ddb55544a56bde52245230711&q=${locationFromStore.location ? locationFromStore.location : "goa"}`)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     // console.log(data)
+    //     setWeather(data)
+    //     dispatch(addDate(data.location.localtime))
+
+    //   }
+    //   )
+
+
+    // with error handeling
+    (async () => {
+      try {
+        setIsLoading(true)
+        setIsError(false)
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=1c238ddb55544a56bde52245230711&q=${locationFromStore.location ? locationFromStore.location : "goa"}`)
+        const data = await response.json()
         setWeather(data)
         dispatch(addDate(data.location.localtime))
+      } catch (error) {
+        setIsError(true)
 
       }
-      )
+      finally {
+        setIsLoading(false)
+      }
+    }
+    )()
+
   }, [locationFromStore])
+
+  if (isError) {
+    return <h1 className='text-center text-2xl text-red-700 font-semibold'>Something went wrong</h1>
+  }
+
+  if (isLoading) {
+    return <h2 className='text-center text-2xl text-yellow-300 font-semibold'>Loading...</h2>
+  }
+
   return (
     <div className='p-5 flex flex-col justify-center bg-red-50 w-[90%] mx-auto  md:w-1/3 rounded-xl text-center '>
 
